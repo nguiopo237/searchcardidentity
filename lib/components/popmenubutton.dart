@@ -7,6 +7,7 @@ import 'package:searchcardidentity/components/style/monsera.dart';
 
 
 
+import '../view/Registration/registerprofile.dart';
 import 'appconfig.dart';
 import 'colors.dart';
 
@@ -69,7 +70,8 @@ class _PopmenubuttonState extends State<Popmenubutton> {
         position: PopupMenuPosition.under,
         child: InkWell(
           onTap:widget.index=="d"?null :() {
-            c.scrollToId!.animateTo(widget.index, duration: Duration(milliseconds: 1000), curve: Curves.decelerate);
+            Get.to(Registerprofile());
+            // c.scrollToId!.animateTo(widget.index, duration: Duration(milliseconds: 1000), curve: Curves.decelerate);
           },
           child: Monserat(
             text: widget.text,

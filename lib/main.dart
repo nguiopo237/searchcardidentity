@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get_utils/get_utils.dart';
+import 'package:get/instance_manager.dart';
 
 
 import 'package:responsive_framework/responsive_framework.dart';
@@ -11,10 +12,15 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:searchcardidentity/view/HomePage.dart';
+import 'package:searchcardidentity/view/Registration/registerprofile.dart';
+
+import 'components/service/controlleur.dart';
 
 
 
 void main() {
+  Controlleur c = Get.put(Controlleur());
+
   runApp(const MyApp());
 }
 
@@ -25,7 +31,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveSizer(builder: (context, orientation, screenType) {
+
       return GetMaterialApp(
+
 
         builder: (context, widget) => ResponsiveBreakpoints.builder(
           child: Builder(builder: (context) {
@@ -50,7 +58,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const Homepage(),
+        home:  Homepage(),
       );
     });
   }

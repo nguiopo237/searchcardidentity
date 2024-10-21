@@ -5,6 +5,9 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:scroll_to_id/scroll_to_id.dart';
 import 'dart:html';
 
+import '../../model/usermodel.dart';
+import '../../service/callapi.dart';
+
 
 
 class Controlleur extends GetxController {
@@ -13,6 +16,7 @@ class Controlleur extends GetxController {
   TextEditingController phone = TextEditingController();
   bool valuephone = false;
   ScrollToId? scrollToId;
+  RxList<Usersearch>usersearch =<Usersearch>[].obs;
 
 
   downloadFile(url) {
@@ -20,5 +24,41 @@ class Controlleur extends GetxController {
     anchorElement.download = "R237mobileapp";
     anchorElement.click();
   }
+
+
+  getuser() async{
+    usersearch.clear;
+    var data= await API.getalluser();
+    if(data!=null){
+      usersearch.add(Usersearch.fromJson(data));
+      print(usersearch.first.status);
+      print(usersearch.length);
+      update();
+
+    }
+  }
+
+  search(name) async{
+    usersearch.clear;
+    var data= await API.searchdata(name);
+    if(data!=null){
+      usersearch.clear;
+      usersearch.add(Usersearch.fromJson(data));
+      print(usersearch.first.status);
+      print(usersearch.length);
+
+
+    }
+    }
+
+    @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    getuser();
+  }
+
+
+
 
 }
