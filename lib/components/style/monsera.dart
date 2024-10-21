@@ -1,0 +1,49 @@
+import 'dart:ui';
+
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class Monserat extends StatelessWidget {
+  final String text;
+  final Color? color;
+  final TextAlign textAlign;
+  final double size;
+  final FontWeight fontWeight;
+  final FontStyle? fontStyle;
+  final int maxLines;
+  final bool softWrap;
+  final TextDecoration barrier;
+
+  const Monserat({
+    super.key,
+    required this.text,
+    this.color,
+    this.barrier= TextDecoration.none,
+    this.fontStyle,
+    this.maxLines = 3,
+    this.size = 18,
+    this.fontWeight = FontWeight.w300,
+    this.textAlign = TextAlign.center,
+    this.softWrap = true,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      textAlign: textAlign,
+      maxLines: maxLines,
+      softWrap: softWrap,
+
+
+      style: GoogleFonts.montserrat(
+        decoration: barrier,
+        color: color,
+        height: 1.6,
+        fontSize: size,
+        fontWeight: fontWeight,
+        fontStyle: fontStyle,
+      ),
+    );
+  }
+}
